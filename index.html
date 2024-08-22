@@ -2,26 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Internship Signup</title>
+    <title>Interactive Form</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Internship Tracker</h1>
-        <p>Last updated: <span id="lastUpdated"></span></p>
-        <form id="signupForm">
-            <label for="role">Are you looking for an internship or a new-grad role?</label>
-            <input type="text" id="role" name="role">
-
-            <label for="frequency">Would you like to sign up for daily or weekly updates?</label>
-            <input type="text" id="frequency" name="frequency">
-
-            <label for="firstName">What is your first name?</label>
-            <input type="text" id="firstName" name="firstName">
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <div id="console"></div> <!-- Mimic a console-like interface -->
+    <input type="text" id="userInput" placeholder="Type here..." autofocus>
     <script src="script.js"></script>
 </body>
 </html>
