@@ -26,3 +26,10 @@ input {
 input::placeholder {
     color: #555;
 }
+
+#summary {
+    color: #ffffff;
+    padding: 20px;
+    font-size: 18px;
+    background-color: #000000;  // Styling the summary to match the console style
+}

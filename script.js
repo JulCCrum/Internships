@@ -28,6 +28,7 @@ function processInput(input) {
     } else {
         addTextToConsole("Thank you for completing the questions.", false);
         document.getElementById('userInput').style.display = 'none'; // Hide input after completion
+        displaySummary(); // Call to display summary info
     }
 }
 
@@ -51,6 +52,17 @@ function validateInput(input, type) {
         return input.toLowerCase() === 'daily' || input.toLowerCase() === 'weekly';
     }
     return true; // Always valid for other text inputs
+}
+
+function displaySummary() {
+    const totalInternships = 591; // Example total number
+    const internshipsThisWeek = 75; // Example new internships this week
+
+    const summaryDiv = document.getElementById('summary');
+    summaryDiv.innerHTML = `
+        <p>Found ${totalInternships} internships total.</p>
+        <p>Found ${internshipsThisWeek} internships this week.</p>
+    `;
 }
 
 typeQuestion(questions[currentQuestion].text); // Start with the first question
