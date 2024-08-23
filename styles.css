@@ -11,16 +11,19 @@ body, html {
     padding: 20px;
     font-size: 18px;
     white-space: pre-wrap; /* Ensures that whitespace is preserved and lines wrap */
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 24px); /* Adjust width to account for padding */
     padding: 10px;
+    margin-bottom: 20px; /* Space below each element */
     border: none;
     background: transparent;
     color: #ffffff;
     font-size: 18px;
     font-family: 'Courier New', monospace;
+    box-sizing: border-box; /* Includes padding in width calculation */
 }
 
 input::placeholder {
@@ -35,11 +38,16 @@ input::placeholder {
 }
 
 @media (max-width: 600px) {
-    body, input, button, #console, #summary {
-        font-size: 16px; /* Smaller font size for mobile devices */
+    body, #console, #summary {
+        padding: 10px; /* Reduces padding on smaller screens */
     }
 
     input, button {
-        padding: 12px; /* Adjust padding for better touch interaction */
+        font-size: 16px; /* Slightly smaller font size for better fit */
+        padding: 8px; /* Reduces padding to save space */
+    }
+
+    #console, #summary {
+        padding: 10px; /* Consistent padding for console and summary */
     }
 }
