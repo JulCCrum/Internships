@@ -5,7 +5,7 @@ body, html {
     font-family: 'Courier New', monospace;
     color: #ffffff;
     background-color: #000000;
-    font-size: 16px;
+    font-size: 16px; /* Consider keeping the font size larger for better readability */
 }
 
 /* Console styles */
@@ -30,7 +30,7 @@ body, html {
     color: #ffffff;
     font-family: 'Courier New', monospace;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 16px; /* Consider increasing the font size for better visibility */
 }
 
 #userInput::placeholder {
@@ -49,21 +49,17 @@ body, html {
 /* Responsive adjustments */
 @media (max-width: 600px) {
     body, #console, #summary, #userInput {
-        font-size: 14px;
+        font-size: 16px; /* Maintaining a larger font size for better readability on small devices */
     }
 
-    #console {
-        padding: 8px;
-    }
-
-    #userInput {
-        padding: 8px;
+    #console, #userInput, #summary {
+        padding: 8px; /* Reducing padding to use space more efficiently */
     }
 }
 
-/* Ensure content doesn't overlap with device UI */
+/* Additional media query to adjust padding when the keyboard is open */
 @media (max-height: 700px) {
     body {
-        padding-bottom: 60px;
+        padding-bottom: 60px; /* Additional padding at the bottom to ensure content isn't hidden by the keyboard */
     }
 }
