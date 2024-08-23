@@ -2,33 +2,33 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling on all devices */
     font-family: 'Courier New', monospace;
     color: #ffffff;
     background-color: #000000;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    font-size: 16px; /* Adjusted for readability on mobile */
+    font-size: 16px; /* Base font size for better readability */
 }
 
 #console {
     color: #ffffff;
-    padding: 10px 5px; /* Reduced side padding */
-    white-space: pre-wrap; /* Ensures text wraps and does not overflow */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding: 10px;
+    white-space: pre-wrap;
+    overflow-x: hidden;
     width: 100%;
-    box-sizing: border-box; /* Ensures padding is included in the width */
-    line-height: 1.4; /* Line height for better readability */
+    box-sizing: border-box;
 }
 
 #userInput {
-    width: calc(100% - 10px); /* Calculating width to include padding */
-    padding: 8px 5px; /* Reduced padding to fit within view */
-    margin-top: 5px; /* Reduced top margin */
-    border: 1px solid #333;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: none;
     background-color: #111;
     color: #ffffff;
     font-family: 'Courier New', monospace;
-    box-sizing: border-box; /* Ensures padding is included in the width */
-    font-size: 16px; /* Font size for inputs */
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none; /* Removes the outline to prevent extra space usage */
 }
 
 #userInput::placeholder {
@@ -37,20 +37,23 @@ body, html {
 
 #summary {
     color: #ffffff;
-    padding: 10px 5px; /* Reduced side padding */
+    padding: 10px;
     background-color: #000000;
     width: 100%;
-    box-sizing: border-box; /* Ensures padding is included in the width */
+    box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
     body, #console, #summary, #userInput {
-        padding: 8px 5px; /* Even smaller side padding for very narrow screens */
+        padding: 5px; /* Reduce padding on small screens */
+        font-size: 15px; /* Slightly reduce font size for very small devices */
     }
 }
 
-@media (max-height: 700px) {
-    body {
-        padding-bottom: 60px; /* Additional padding at the bottom to prevent keyboard overlap */
+@media (orientation: portrait) {
+    /* Additional styles for portrait mode to ensure compatibility */
+    body, #console, #summary, #userInput {
+        padding: 5px;
+        font-size: 15px;
     }
 }
