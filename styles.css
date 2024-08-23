@@ -51,6 +51,7 @@ body, html {
     body, #console, #summary, #userInput {
         font-size: 16px; /* Maintaining a larger font size for better readability on small devices */
         margin-right: 400px;
+        margin-left: 200px;
     }
 
     #console, #userInput, #summary {
