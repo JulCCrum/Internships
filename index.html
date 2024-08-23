@@ -3,15 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Internship</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Internship Query</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.5;
+            height: 100%;
+            overflow: hidden;
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: calc(14px + 1vw);  /* Responsive font size */
+        }
+        #console {
+            flex-grow: 1;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            border: none;
+            color: #fff;
+            font-family: inherit;
+            font-size: inherit;
+            box-sizing: border-box;
+        }
+        #summary {
+            margin-top: 10px;
+        }
+        @media (max-height: 500px) {
+            #app {
+                font-size: calc(12px + 0.5vw);  /* Smaller font size for landscape mode */
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="console"></div>
-    <div id="inputContainer">
+    <div id="app">
+        <div id="console"></div>
         <input type="text" id="userInput" placeholder="Type here...">
+        <div id="summary"></div>
     </div>
-    <div id="summary"></div>
     <script src="script.js"></script>
+    <script>
+        // Handle virtual keyboard
+        const appElement = document.getElementById('app');
+        const originalHeight = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            if (window.innerHeight < originalHeight) {
+                // Keyboard is likely visible
+                appElement.style.height = `${window.innerHeight}px`;
+            } else {
+                appElement.style.height = '100%';
+            }
+        });
+    </script>
 </body>
 </html>

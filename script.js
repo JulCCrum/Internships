@@ -6,16 +6,20 @@ const questions = [
 let answers = [];
 let currentQuestion = 0;
 
-document.getElementById('userInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter' && this.value) {
-        processInput(this.value.trim());
-        this.value = ''; // Clear input after enter
-    }
-});
+const consoleElement = document.getElementById('console');
+const userInputElement = document.getElementById('userInput');
+const summaryElement = document.getElementById('summary');
+
+function addTextToConsole(text, isUserInput = false) {
+    const p = document.createElement('p');
+    p.textContent = isUserInput ? `> ${text}` : text;
+    consoleElement.appendChild(p);
+    consoleElement.scrollTop = consoleElement.scrollHeight;
+}
 
 function processInput(input) {
     if (!validateInput(input, questions[currentQuestion].type)) {
-        addTextToConsole("Invalid input. Please try again.", false);
+        addTextToConsole("Invalid input. Please try again.");
         return;
     }
 
@@ -24,45 +28,47 @@ function processInput(input) {
     currentQuestion++;
 
     if (currentQuestion < questions.length) {
-        typeQuestion(questions[currentQuestion].text);
+        addTextToConsole(questions[currentQuestion].text);
     } else {
-        addTextToConsole("Thank you for completing the questions.", false);
-        document.getElementById('userInput').style.display = 'none'; // Hide input after completion
-        displaySummary(); // Call to display summary info
+        addTextToConsole("Thank you for completing the questions.");
+        userInputElement.style.display = 'none';
+        displaySummary();
     }
-}
-
-function typeQuestion(question) {
-    let display = '> ' + question;
-    addTextToConsole(display, false);
-}
-
-function addTextToConsole(text, addSpace) {
-    const consoleDiv = document.getElementById('console');
-    consoleDiv.innerHTML += text + '<br>' + (addSpace ? '<br>' : '');
-    consoleDiv.scrollTop = consoleDiv.scrollHeight; // Scroll to bottom
 }
 
 function validateInput(input, type) {
     if (type === 'email') {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input);
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input);
     } else if (type === 'yesno') {
-        return input.toLowerCase() === 'yes' || input.toLowerCase() === 'no';
+        return ['yes', 'no'].includes(input.toLowerCase());
     } else if (type === 'frequency') {
-        return input.toLowerCase() === 'daily' || input.toLowerCase() === 'weekly';
+        return ['daily', 'weekly'].includes(input.toLowerCase());
     }
-    return true; // Always valid for other text inputs
+    return true;
 }
 
 function displaySummary() {
-    const totalInternships = 591; // Example total number
-    const internshipsThisWeek = 75; // Example new internships this week
-
-    const summaryDiv = document.getElementById('summary');
-    summaryDiv.innerHTML = `
+    const totalInternships = 591;
+    const internshipsThisWeek = 75;
+    summaryElement.innerHTML = `
         <p>Found ${totalInternships} internships total.</p>
         <p>Found ${internshipsThisWeek} internships this week.</p>
     `;
 }
 
-typeQuestion(questions[currentQuestion].text); // Start with the first question
+userInputElement.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && this.value.trim()) {
+        processInput(this.value.trim());
+        this.value = '';
+    }
+});
+
+// Start with the first question
+addTextToConsole(questions[currentQuestion].text);
+
+// Adjust scroll on input focus
+userInputElement.addEventListener('focus', () => {
+    setTimeout(() => {
+        consoleElement.scrollTop = consoleElement.scrollHeight;
+    }, 300);  // Small delay to ensure keyboard is fully visible
+});
