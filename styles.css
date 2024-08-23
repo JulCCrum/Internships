@@ -1,32 +1,44 @@
-/* Base styles */
 body, html {
+    height: 100%;
     margin: 0;
-    padding: 0 20px; /* horizontal padding */
+    padding: 0 5%; /* Adjusted for padding from both sides */
     font-family: 'Courier New', monospace;
     color: #ffffff;
     background-color: #000000;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    font-size: 16px; /* Optimal for mobile readability */
+    overflow-x: hidden; /* Prevent any horizontal scrolling */
+    font-size: 16px; /* Prevent zooming on input focus */
+    box-sizing: border-box;
 }
 
-input, textarea, button {
-    width: 100%; /* Full width */
-    padding: 12px; /* Adequate padding for touch targets */
-    border: 1px solid #ccc;
-    margin-bottom: 20px; /* Space between elements */
+#console, #userInput, #summary {
+    width: 100%; /* Ensures these elements do not cause overflow */
+    box-sizing: border-box; /* Padding and border are included in the width */
 }
 
-/* Media Query for devices when the keyboard is likely visible (e.g., small height) */
-@media (max-height: 500px) {
-    body {
-        padding-bottom: 100px; /* Extra space at the bottom */
-    }
+#console {
+    padding: 10px;
+    margin-bottom: 10px; /* Space between console and input */
 }
 
-/* Standard media query for devices under 600px width */
+#userInput {
+    padding: 10px;
+    margin-bottom: 20px; /* Space below the input */
+    border: 1px solid #555; /* Slightly visible border */
+    background: #111; /* Dark background for the input */
+    color: #fff;
+    font-size: 1rem; /* Responsive font size */
+}
+
+#userInput::placeholder {
+    color: #555;
+}
+
+#summary {
+    padding: 10px;
+}
+
 @media (max-width: 600px) {
     body {
-        padding: 0 10px; /* Reduced side padding on smaller screens */
-        font-size: 14px; /* Slightly smaller font size for small devices */
+        font-size: 14px; /* Smaller font size for smaller devices */
     }
 }
