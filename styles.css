@@ -1,59 +1,32 @@
+/* Base styles */
 body, html {
-    height: 100%;
     margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrolling on all devices */
+    padding: 0 20px; /* horizontal padding */
     font-family: 'Courier New', monospace;
     color: #ffffff;
     background-color: #000000;
-    font-size: 16px; /* Base font size for better readability */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-size: 16px; /* Optimal for mobile readability */
 }
 
-#console {
-    color: #ffffff;
-    padding: 10px;
-    white-space: pre-wrap;
-    overflow-x: hidden;
-    width: 100%;
-    box-sizing: border-box;
+input, textarea, button {
+    width: 100%; /* Full width */
+    padding: 12px; /* Adequate padding for touch targets */
+    border: 1px solid #ccc;
+    margin-bottom: 20px; /* Space between elements */
 }
 
-#userInput {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: none;
-    background-color: #111;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-    box-sizing: border-box;
-    font-size: 16px;
-    outline: none; /* Removes the outline to prevent extra space usage */
-}
-
-#userInput::placeholder {
-    color: #555;
-}
-
-#summary {
-    color: #ffffff;
-    padding: 10px;
-    background-color: #000000;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-    body, #console, #summary, #userInput {
-        padding: 5px; /* Reduce padding on small screens */
-        font-size: 15px; /* Slightly reduce font size for very small devices */
+/* Media Query for devices when the keyboard is likely visible (e.g., small height) */
+@media (max-height: 500px) {
+    body {
+        padding-bottom: 100px; /* Extra space at the bottom */
     }
 }
 
-@media (orientation: portrait) {
-    /* Additional styles for portrait mode to ensure compatibility */
-    body, #console, #summary, #userInput {
-        padding: 5px;
-        font-size: 15px;
+/* Standard media query for devices under 600px width */
+@media (max-width: 600px) {
+    body {
+        padding: 0 10px; /* Reduced side padding on smaller screens */
+        font-size: 14px; /* Slightly smaller font size for small devices */
     }
 }
