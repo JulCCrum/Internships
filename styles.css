@@ -33,3 +33,13 @@ input::placeholder {
     font-size: 18px;
     background-color: #000000;  // Styling the summary to match the console style
 }
+
+@media (max-width: 600px) {
+    body, input, button, #console, #summary {
+        font-size: 16px; /* Smaller font size for mobile devices */
+    }
+
+    input, button {
+        padding: 12px; /* Adjust padding for better touch interaction */
+    }
+}
