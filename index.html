@@ -2,54 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Internship</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', monospace;
-            background-color: #000;
-            color: #fff;
-            height: 100%;
-            overflow: hidden;
-        }
-        #app {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: calc(16px + 1vw);  /* Larger base font size */
-        }
-        #console {
-            flex-grow: 1;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            margin-bottom: 10px;
-        }
-        #userInput {
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            border: none;
-            color: #fff;
-            font-family: inherit;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        #summary {
-            margin-top: 10px;
-        }
-    </style>
+    <title>Internships</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Ensure this line is present -->
 </head>
 <body>
-    <div id="app">
-        <div id="console"></div>
-        <input type="text" id="userInput" placeholder="Type here...">
-        <div id="summary"></div>
-    </div>
+    <div id="console"></div> <!-- Mimic a console-like interface -->
+    <input type="text" id="userInput" placeholder="Type here..." autofocus>
+    <div id="summary"></div> <!-- Add this line for the summary display -->
     <script src="script.js"></script>
 </body>
 </html>
