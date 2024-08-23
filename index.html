@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Internship Query</title>
+    <title>Internship</title>
     <style>
         body, html {
             margin: 0;
@@ -11,8 +11,6 @@
             font-family: 'Courier New', monospace;
             background-color: #000;
             color: #fff;
-            font-size: 16px;
-            line-height: 1.5;
             height: 100%;
             overflow: hidden;
         }
@@ -22,7 +20,7 @@
             height: 100%;
             padding: 10px;
             box-sizing: border-box;
-            font-size: calc(14px + 1vw);  /* Responsive font size */
+            font-size: calc(16px + 1vw);  /* Larger base font size */
         }
         #console {
             flex-grow: 1;
@@ -38,16 +36,11 @@
             border: none;
             color: #fff;
             font-family: inherit;
-            font-size: inherit;
+            font-size: 16px;
             box-sizing: border-box;
         }
         #summary {
             margin-top: 10px;
-        }
-        @media (max-height: 500px) {
-            #app {
-                font-size: calc(12px + 0.5vw);  /* Smaller font size for landscape mode */
-            }
         }
     </style>
 </head>
@@ -58,19 +51,5 @@
         <div id="summary"></div>
     </div>
     <script src="script.js"></script>
-    <script>
-        // Handle virtual keyboard
-        const appElement = document.getElementById('app');
-        const originalHeight = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            if (window.innerHeight < originalHeight) {
-                // Keyboard is likely visible
-                appElement.style.height = `${window.innerHeight}px`;
-            } else {
-                appElement.style.height = '100%';
-            }
-        });
-    </script>
 </body>
 </html>

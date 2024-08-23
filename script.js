@@ -6,6 +6,7 @@ const questions = [
 let answers = [];
 let currentQuestion = 0;
 
+const appElement = document.getElementById('app');
 const consoleElement = document.getElementById('console');
 const userInputElement = document.getElementById('userInput');
 const summaryElement = document.getElementById('summary');
@@ -63,12 +64,29 @@ userInputElement.addEventListener('keypress', function(event) {
     }
 });
 
+// Handle virtual keyboard
+const originalHeight = window.innerHeight;
+function handleResize() {
+    if (window.innerHeight < originalHeight) {
+        // Keyboard is likely visible
+        appElement.style.height = `${window.innerHeight}px`;
+        appElement.style.fontSize = 'calc(14px + 0.5vw)';  // Reduce font size when keyboard is visible
+    } else {
+        appElement.style.height = '100%';
+        appElement.style.fontSize = 'calc(16px + 1vw)';  // Restore original font size
+    }
+    consoleElement.scrollTop = consoleElement.scrollHeight;
+}
+
+window.addEventListener('resize', handleResize);
+
+userInputElement.addEventListener('focus', () => {
+    setTimeout(handleResize, 300);  // Delay to ensure keyboard is fully visible
+});
+
+userInputElement.addEventListener('blur', () => {
+    setTimeout(handleResize, 300);  // Delay to ensure keyboard is fully hidden
+});
+
 // Start with the first question
 addTextToConsole(questions[currentQuestion].text);
-
-// Adjust scroll on input focus
-userInputElement.addEventListener('focus', () => {
-    setTimeout(() => {
-        consoleElement.scrollTop = consoleElement.scrollHeight;
-    }, 300);  // Small delay to ensure keyboard is fully visible
-});
