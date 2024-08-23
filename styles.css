@@ -40,5 +40,6 @@ body, html {
 @media (max-width: 600px) {
     body {
         font-size: 14px; /* Smaller font size for smaller devices */
+        padding-right: 200px;
     }
 }
