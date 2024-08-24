@@ -1,44 +1,54 @@
 body, html {
     height: 100%;
     margin: 0;
-    padding: 0 5%; /* Adjusted for padding from both sides */
+    padding: 0 5%; /* Provides padding from the viewport edges */
     font-family: 'Courier New', monospace;
     color: #ffffff;
     background-color: #000000;
-    overflow-x: hidden; /* Prevent any horizontal scrolling */
-    font-size: 16px; /* Prevent zooming on input focus */
-    box-sizing: border-box;
+    overflow-x: hidden; /* Prevents horizontal overflow */
+    font-size: 16px; /* Base font size */
 }
 
 #console, #userInput, #summary {
-    width: 100%; /* Ensures these elements do not cause overflow */
-    box-sizing: border-box; /* Padding and border are included in the width */
+    width: 100%; /* Ensures that these containers fit within the viewport width */
+    box-sizing: border-box; /* Includes padding and border in the element's total width */
+    padding: 10px; /* Uniform padding for all sides */
+    margin-bottom: 10px; /* Space between elements */
 }
 
 #console {
-    padding: 10px;
-    margin-bottom: 10px; /* Space between console and input */
+    background-color: #222; /* Slightly different background for visibility */
 }
 
 #userInput {
-    padding: 10px;
-    margin-bottom: 20px; /* Space below the input */
-    border: 1px solid #555; /* Slightly visible border */
-    background: #111; /* Dark background for the input */
-    color: #fff;
+    border: 1px solid #555; /* Defines a clear boundary for input */
+    background-color: #111; /* Dark background for input */
+    color: #fff; /* Text color */
     font-size: 1rem; /* Responsive font size */
 }
 
 #userInput::placeholder {
-    color: #555;
+    color: #555; /* Placeholder text color */
 }
 
 #summary {
-    padding: 10px;
+    background-color: #222; /* Background for summary section */
 }
 
 @media (max-width: 600px) {
     body {
-        font-size: 24px; /* Smaller font size for smaller devices */
+        padding: 0 2%; /* Reduced padding on smaller screens */
+        font-size: 14px; /* Smaller font size for smaller devices */
+    }
+
+    #console, #userInput, #summary {
+        padding: 8px; /* Slightly reduced padding */
+    }
+}
+
+@media (orientation: portrait) {
+    /* Adjustments for portrait mode to improve readability */
+    #console, #userInput, #summary {
+        padding: 8px; /* Consistent padding for simplicity */
     }
 }
