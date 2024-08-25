@@ -52,3 +52,8 @@ body, html {
         padding: 8px; /* Consistent padding for simplicity */
     }
 }
+
+.window {
+    display: flex;
+    flex-direction: column;
+}
