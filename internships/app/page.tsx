@@ -1,6 +1,5 @@
 "use client"
 
-import React from 'react'
 import { useState, useEffect, useRef } from 'react'
 
 export default function Component() {
@@ -30,10 +29,11 @@ export default function Component() {
     if (currentQuestion < questions.length) {
       const text = questions[currentQuestion]
       let i = 0
+      setTypingText(text.charAt(0)) // Set the first character immediately
       const typingInterval = setInterval(() => {
-        if (i < text.length) {
-          setTypingText((prev) => prev + text.charAt(i))
+        if (i < text.length - 1) {
           i++
+          setTypingText(text.slice(0, i + 1))
         } else {
           clearInterval(typingInterval)
           setConversation((prev) => [...prev, { text, isUser: false }])
@@ -41,10 +41,10 @@ export default function Component() {
           if (currentQuestion < 3) {
             setShowInput(true)
           } else {
-            setTimeout(() => setCurrentQuestion((prev) => prev + 1), 1000)
+            setCurrentQuestion((prev) => prev + 1)
           }
         }
-      }, 30)
+      }, 30) // Kept at 30ms as requested
       return () => clearInterval(typingInterval)
     }
   }, [currentQuestion])
@@ -96,7 +96,8 @@ export default function Component() {
               {item.text}
             </div>
           ))}
-          <div className="text-[#01a624]">{typingText}</div>
+          {typingText}
+          <span className="animate-pulse">▋</span>
           {showInput && (
             <form onSubmit={handleSubmit} className="mt-2">
               <input
@@ -108,7 +109,6 @@ export default function Component() {
               />
             </form>
           )}
-          <span className="animate-pulse">▋</span>
         </div>
       </div>
     </div>
